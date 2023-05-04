@@ -1,5 +1,15 @@
 package apirest_models;
 
-public class userDto {
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
+@Data
+@AllArgsConstructor
+public class userDto {
+	private String user;
+	private String password;
+	
 }
+
+
+
