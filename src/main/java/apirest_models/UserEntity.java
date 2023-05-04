@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-public class userEntitie {
+public class UserEntity {
 
 	@Data
 	@AllArgsConstructor
