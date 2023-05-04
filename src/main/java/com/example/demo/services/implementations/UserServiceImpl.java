@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.apirest_models.AuthDto;
 import com.example.demo.apirest_models.LoggedUserDto;
 import com.example.demo.apirest_models.UserEntity;
+import com.example.demo.apirest_models.UsersDto;
 import com.example.demo.services.UserService;
 
 @Service
@@ -48,9 +49,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<UserEntity> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<UsersDto> getAll() {
+		List<UsersDto> usersList = new ArrayList<>();
+		for(UserEntity user: users) {
+			usersList.add(new UsersDto(user.getName(), user.getLastname(), user.getUsername(), user.getRole(), user.getEmail(), user.getIsActive()));
+		}
+		return usersList;
 	}
 
 	@Override
