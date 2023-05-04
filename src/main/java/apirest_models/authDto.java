@@ -8,4 +8,7 @@ import lombok.Data;
 public class authDto {
 	private String identifier;
 	private String password;
+	
 }
+
+
