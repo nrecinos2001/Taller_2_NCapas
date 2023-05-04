@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 					Long formattedDate = Long.parseLong(actualDate.format(formatter));
 					
-					if (user.getHired().after(new Date(formattedDate))) {
+					if (user.getHiredDate().after(new Date(formattedDate))) {
 						return null;
 					}
 					if (!user.getIsActive()) {
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
 	public List<UsersDto> getAll() {
 		List<UsersDto> usersList = new ArrayList<>();
 		for(UserEntity user: users) {
-			usersList.add(new UsersDto(user.getName(), user.getLastname(), user.getUsername(), user.getRole(), user.getEmail(), user.getIsActive()));
+			usersList.add(new UsersDto(user.getName(), user.getLastname(), user.getRole(), user.getEmail(), user.getHiredDate()));
 		}
 		return usersList;
 	}

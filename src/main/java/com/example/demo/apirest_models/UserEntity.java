@@ -17,5 +17,5 @@ public class UserEntity {
 		private String username;
 		private String email;
 		private Boolean isActive;
-		private Date hired;
+		private Date hiredDate;
 }

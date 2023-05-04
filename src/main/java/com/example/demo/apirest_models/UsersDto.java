@@ -1,5 +1,7 @@
 package com.example.demo.apirest_models;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -8,8 +10,7 @@ import lombok.Data;
 public class UsersDto {
 	String name;
 	String lastname;
-	String username;
 	String role;
 	String email;
-	Boolean isActive;
+	Date hiredDate;
 }
