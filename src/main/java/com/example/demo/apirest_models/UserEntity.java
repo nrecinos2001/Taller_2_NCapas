@@ -1,15 +1,14 @@
-package apirest_models;
+package com.example.demo.apirest_models;
 
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-public class UserEntity {
 
-	@Data
-	@AllArgsConstructor
-	public class User {
+@Data
+@AllArgsConstructor
+public class UserEntity {
 		private String code;
 		private String password;
 		private String name;
@@ -17,6 +16,4 @@ public class UserEntity {
 		private String role;
 		private Boolean isActive;
 		private Date hired;
-	}
-	
 }
