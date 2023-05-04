@@ -90,8 +90,22 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public String toggleActive(String code) {
-		// TODO Auto-generated method stub
-		return null;
+		UserEntity user = users.stream()
+				.filter(b -> b.getCode().equals(code))
+				.findAny()
+				.orElse(null);
+		if (user == null) {
+			return null;			
+		}
+		int index = users.indexOf(user);
+		if (user.getIsActive()) {
+			user.setIsActive(false);
+			users.set(index, user);
+			return "User deactivated successfully";
+		}
+		user.setIsActive(true);
+		users.set(index, user);
+		return "User activated successfully";
 	}
 
 	@Override
