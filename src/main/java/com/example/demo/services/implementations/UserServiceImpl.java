@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.apirest_models.AuthDto;
+import com.example.demo.apirest_models.CreateUserDto;
 import com.example.demo.apirest_models.LoggedUserDto;
 import com.example.demo.apirest_models.UserEntity;
 import com.example.demo.apirest_models.UsersDto;
@@ -58,15 +59,27 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String getOneById(String code) {
-		// TODO Auto-generated method stub
-		return null;
+	public UsersDto getOneById(String code) {
+		UserEntity user = users.stream()
+		.filter(b -> b.getCode().equals(code))
+		.findAny()
+		.orElse(null);
+		
+		if(user == null) {
+			return null;
+		}
+
+		UsersDto mappedUser = new UsersDto(user.getName(), user.getLastname(), user.getRole(), user.getEmail(), user.getHiredDate());
+		return mappedUser;
 	}
 
 	@Override
-	public String create(String info) {
-		// TODO Auto-generated method stub
-		return null;
+	public String create(CreateUserDto createUserDto) {
+		int randomNumber = (int)(Math.random()*10+1);
+		String code = "" + createUserDto.getName().charAt(0) + createUserDto.getLastname().charAt(0) + randomNumber;
+		String encryptedPassword = createUserDto.getPassword().concat("-encrypted");
+		users.add(new UserEntity(code, encryptedPassword, createUserDto.getName(), createUserDto.getLastname(), "user", createUserDto.getUsername(), createUserDto.getEmail(), false, new Date()));
+		return "The user was created successfully";
 	}
 
 	@Override
