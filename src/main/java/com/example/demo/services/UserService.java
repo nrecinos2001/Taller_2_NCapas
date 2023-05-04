@@ -2,10 +2,12 @@ package com.example.demo.services;
 
 import java.util.List;
 
+import com.example.demo.apirest_models.AuthDto;
+import com.example.demo.apirest_models.LoggedUserDto;
 import com.example.demo.apirest_models.UserEntity;
 
 public interface UserService {
-	String signIn(); // TODO Add Dto for Singin
+	LoggedUserDto signIn(AuthDto authDto);
 	List<UserEntity> getAll(); // TODO Update Return Type
 	String getOneById(String code); // TODO Update return type
 	String create(String info); // TODO Update return type

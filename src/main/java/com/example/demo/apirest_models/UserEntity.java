@@ -14,6 +14,8 @@ public class UserEntity {
 		private String name;
 		private String lastname;
 		private String role;
+		private String username;
+		private String email;
 		private Boolean isActive;
 		private Date hired;
 }
