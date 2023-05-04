@@ -108,10 +108,4 @@ public class UserServiceImpl implements UserService {
 		return "User activated successfully";
 	}
 
-	@Override
-	public void save(String info) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

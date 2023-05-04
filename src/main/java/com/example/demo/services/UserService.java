@@ -10,10 +10,9 @@ import com.example.demo.apirest_models.UsersDto;
 
 public interface UserService {
 	LoggedUserDto signIn(AuthDto authDto);
-	List<UsersDto> getAll(); // TODO Update Return Type
-	UsersDto getOneById(String code); // TODO Update return type
-	String create(CreateUserDto createUserDto); // TODO Update return type
+	List<UsersDto> getAll();
+	UsersDto getOneById(String code);
+	String create(CreateUserDto createUserDto);
 	String changePassword(String info); // TODO update return type
-	String toggleActive(String code); // TODO update return type
-	void save(String info); // TODO Update return type
+	String toggleActive(String code);
 }
