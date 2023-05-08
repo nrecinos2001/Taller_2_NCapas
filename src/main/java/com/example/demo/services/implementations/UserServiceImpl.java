@@ -20,10 +20,10 @@ public class UserServiceImpl implements UserService {
 	private static List<UserEntity> users = new ArrayList<UserEntity>();
 	
 	static {
-        users.add(new UserEntity("AH000011", "pass-encrypted", "Arturo", "Hernandez", "user","ahernandez", "ahernandez@contoso.com", true, new Date(25052023)));
-        users.add(new UserEntity("AO000022", "pass-encrypted", "Alejandro", "Ortega", "user","aortega","aortega@contoso.com", false, new Date(18012022)));
-        users.add(new UserEntity("JP000033", "pass-encrypted", "Josue", "Perez", "user","jperez","jperez@contoso.com", true, new Date(12122001)));
-        users.add(new UserEntity("NR000044", "pass-encrypted", "Nestor", "Recinos", "admin","nrecinos","nrecinos@contoso.com", true, new Date(18032022)));
+        users.add(new UserEntity("AH000011", "pass-encrypted", "Arturo", "Hernandez", "user","ahernandez", "ahernandez@contoso.com", true, new Date("25/05/2023")));
+        users.add(new UserEntity("AO000022", "pass-encrypted", "Alejandro", "Ortega", "user","aortega","aortega@contoso.com", false, new Date("18/01/2022")));
+        users.add(new UserEntity("JP000033", "pass-encrypted", "Josue", "Perez", "user","jperez","jperez@contoso.com", true, new Date("10/12/2022")));
+        users.add(new UserEntity("NR000044", "pass-encrypted", "Nestor", "Recinos", "admin","nrecinos","nrecinos@contoso.com", true, new Date("10/10/2021")));
     }
 	
 	@Override
@@ -31,11 +31,8 @@ public class UserServiceImpl implements UserService {
 		for (UserEntity user: users) {
 			if(user.getUsername().equals(authDto.getIdentifier()) || user.getEmail().equals(authDto.getIdentifier())) {
 				if (user.getPassword().equals(authDto.getPassword()+"-encrypted")) {
-					LocalDateTime actualDate = LocalDateTime.now();
-					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-					Long formattedDate = Long.parseLong(actualDate.format(formatter));
 					
-					if (user.getHiredDate().after(new Date(formattedDate))) {
+					if (user.getHiredDate().after(new Date())) {
 						return null;
 					}
 					if (!user.getIsActive()) {

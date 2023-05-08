@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.apirest_models.AuthDto;
 import com.example.demo.apirest_models.LoggedUserDto;
 import com.example.demo.services.UserService;
 
-@Controller
+@RestController
 //@RequestMapping("/auth")
 @CrossOrigin("*")
 public class AuthController {
@@ -27,7 +28,9 @@ public AuthController(UserService userService) {
 
 @PostMapping("/auth/signin")
 public LoggedUserDto signIn(@RequestBody AuthDto user) {
+	System.out.println(user);
 	return userService.signIn(user);
+	//return userService.signIn(user);
 }
 
 /*
