@@ -28,9 +28,7 @@ public AuthController(UserService userService) {
 
 @PostMapping("/auth/signin")
 public LoggedUserDto signIn(@RequestBody AuthDto user) {
-	System.out.println(user);
 	return userService.signIn(user);
-	//return userService.signIn(user);
 }
 
 /*
