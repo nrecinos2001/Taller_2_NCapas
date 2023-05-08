@@ -13,7 +13,7 @@ import com.example.demo.apirest_models.LoggedUserDto;
 import com.example.demo.services.UserService;
 
 @Controller
-@RequestMapping("/auth")
+//@RequestMapping("/auth")
 @CrossOrigin("*")
 public class AuthController {
 
@@ -39,6 +39,4 @@ if(signin == null) {
 }
 return new ResponseEntity(signin, HttpStatus.NOT_FOUND);
 }*/
-
-
 }
