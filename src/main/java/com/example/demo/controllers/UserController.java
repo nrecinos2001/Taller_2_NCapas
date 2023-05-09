@@ -35,8 +35,12 @@ public class UserController {
 	
 	 
 	@PostMapping("/user/")
-	    public String create(@RequestBody CreateUserDto user) {
-	        return userService.create(user);
+	public ResponseEntity<String> create(@RequestBody CreateUserDto user) {
+			String createdUser = userService.create(user);
+			if (createdUser == null) {
+				return new ResponseEntity("User email or username already exists", HttpStatus.BAD_REQUEST);
+			}
+	        return new ResponseEntity(createdUser, HttpStatus.CREATED);
 	    }
 	    
 	@GetMapping("/user/all")

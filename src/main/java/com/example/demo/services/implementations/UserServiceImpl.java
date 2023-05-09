@@ -72,6 +72,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public String create(CreateUserDto createUserDto) {
+		UserEntity user = users.stream()
+				.filter(b -> b.getEmail().equals(createUserDto.getEmail()) || b.getUsername().equals(createUserDto.getUsername()))
+				.findAny()
+				.orElse(null);
+				
+		if(user != null) {
+			return null;
+		}
+
 		int randomNumber = (int)(Math.random()*10+1);
 		String code = "" + createUserDto.getName().charAt(0) + createUserDto.getLastname().charAt(0) + randomNumber;
 		String encryptedPassword = createUserDto.getPassword().concat("-encrypted");
