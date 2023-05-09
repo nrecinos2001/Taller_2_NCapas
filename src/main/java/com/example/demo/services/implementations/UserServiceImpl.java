@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.apirest_models.AuthDto;
+import com.example.demo.apirest_models.ChangePasswordDto;
 import com.example.demo.apirest_models.CreateUserDto;
 import com.example.demo.apirest_models.LoggedUserDto;
 import com.example.demo.apirest_models.UserEntity;
@@ -89,7 +90,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String changePassword(String info) {
+	public String changePassword(String identifier, ChangePasswordDto changePasswordDto) {
+		UserEntity user = users.stream()
+				.filter(b -> b.getCode().equals(identifier))
+				.findAny()
+				.orElse(null);
+		if (user == null) {
+			return "User not found";
+		}
+		if (user.getPassword() != changePasswordDto.getOldPassword() + "-encrypted") {
+			return "Old password does not match with user";
+		}
+		
 		// TODO Auto-generated method stub
 		return null;
 	}

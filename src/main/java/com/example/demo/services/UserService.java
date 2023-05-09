@@ -3,6 +3,7 @@ package com.example.demo.services;
 import java.util.List;
 
 import com.example.demo.apirest_models.AuthDto;
+import com.example.demo.apirest_models.ChangePasswordDto;
 import com.example.demo.apirest_models.CreateUserDto;
 import com.example.demo.apirest_models.LoggedUserDto;
 import com.example.demo.apirest_models.UserEntity;
@@ -13,6 +14,6 @@ public interface UserService {
 	List<UsersDto> getAll();
 	UsersDto getOneById(String code);
 	String create(CreateUserDto createUserDto);
-	String changePassword(String info); // TODO update return type
+	String changePassword(String identifier, ChangePasswordDto changePasswordDto); // TODO update return type
 	String toggleActive(String code);
 }
